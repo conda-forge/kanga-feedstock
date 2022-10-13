@@ -1,18 +1,18 @@
 {% set name = "kanga" %}
-{% set version = "0.0.19" %}
+{% set version = "0.0.20" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: d1bc1ff89168663dfcd33361e55c2caf0b571c81eac8d3748c2d8fd209255378
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 04f7a9b8e281f39671cb393c9fc15915cc0ae46f815f1f86c6286d6420633931
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -31,10 +31,10 @@ test:
     - kanga
 
 about:
-  home: "https://github.com/papamarkou/kanga"
+  home: https://github.com/papamarkou/kanga
   license: MIT
   license_file: LICENSE.txt
-  summary: "MCMC diagnostics"
+  summary: MCMC diagnostics
 
 extra:
   recipe-maintainers:
