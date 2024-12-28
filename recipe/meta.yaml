@@ -6,27 +6,29 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 04f7a9b8e281f39671cb393c9fc15915cc0ae46f815f1f86c6286d6420633931
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - matplotlib-base >=3.3.3
     - numpy >=1.19.2
-    - python >=3.6
+    - python >={{ python_min }}
     - scipy >=1.5.2
     - seaborn >=0.11.0
     - statsmodels >=0.12.0
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - kanga
 
